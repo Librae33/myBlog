@@ -9,7 +9,8 @@
 
 后台实现的主要功能有使用ckeditor发表文章，查看留言和评论，上传图片等功能
 
-暂时没有办法提供预览
+##### 暂时没有办法提供预览  
+
 ### 首页
 ![image](http://wx1.sinaimg.cn/mw1024/9fbe622aly1fixi4l8ywxj210q0hcabe.jpg)
 
