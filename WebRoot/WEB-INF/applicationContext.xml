@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName"
+			value="com.mysql.jdbc.Driver">
+		</property>
+		<property name="url" value="jdbc:mysql://localhost:3306/mydb"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value="12345"></property>
+	</bean>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLDialect
+				</prop>
+			</props>
+		</property>
+		<property name="mappingResources">
+			<list>
+				<value>com/tssProject/dao/User.hbm.xml</value>
+				<value>com/tssProject/dao/Manager.hbm.xml</value>
+				<value>com/tssProject/dao/Topic.hbm.xml</value>
+				<value>com/tssProject/dao/Contact.hbm.xml</value>
+				<value>com/tssProject/dao/Comment.hbm.xml</value>
+				<value>com/tssProject/dao/Upload.hbm.xml</value></list>
+		</property></bean>
+	<bean id="UserDAO" class="com.tssProject.dao.UserDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"></ref>
+		</property>
+	</bean>
+	
+	<bean id="ManagerDAO" class="com.tssProject.dao.ManagerDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"></ref>
+		</property>
+	</bean>
+	
+		<bean id="TopicDAO" class="com.tssProject.dao.TopicDAO">
+			<property name="sessionFactory">
+				<ref bean="sessionFactory" />
+			</property>
+		</bean>
+		
+		<bean id="ContactDAO" class="com.tssProject.dao.ContactDAO">
+			<property name="sessionFactory">
+				<ref bean="sessionFactory" />
+			</property>
+		</bean>
+		
+		<bean id="CommentDAO" class="com.tssProject.dao.CommentDAO">
+			<property name="sessionFactory">
+				<ref bean="sessionFactory" />
+			</property>
+		</bean>
+		<bean id="UploadDAO" class="com.tssProject.dao.UploadDAO">
+			<property name="sessionFactory">
+				<ref bean="sessionFactory" />
+			</property>
+		</bean>
+		
+		
+	
+	
+	
+	
+	
+	<!-- 定义HibernateTemplate -->
+	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>		<!--注入SessionFactory实例对象-->
+		</property>
+	</bean>
+	
+	<bean id="hibernateTransactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>	<!--注入SessionFactory实例对象-->
+		</property>
+	</bean>
+	
+	 
+	 <!-- 声明式的事务管理UserService开始 -->
+	<bean id="UserServiceTarget" class="com.tssProject.service.UserServiceImpl">
+		<property name="userdao" ref="UserDAO" ></property>
+	</bean>
+	
+	<bean id="UserService"
+		 class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref bean="hibernateTransactionManager"/><!-- 为事务代理bean注入事务管理器-->
+		</property>
+		<property name="transactionAttributes"><!-- 设置事务属性 -->
+			<props>
+			<!-- 所有以 show开头的方法，采用required的事务策略，并且只读 -->
+			<prop key="show*">PROPAGATION_REQUiRED,readOnly</prop>
+			<!-- 其他所有的方法，采用required的事务策略 -->
+			<prop key="*">PROPAGATION_REQUIRED</prop>
+			</props>
+		</property>
+		<property name="target"><!--为事务代理bean设置目标bean -->
+			<ref bean="UserServiceTarget"/>
+		</property>
+	</bean>
+	<!--声明式的事务管理UserService结束 -->
+	
+	
+	
+	
+	
+	 <!-- 声明式的事务管理ManagerService开始 -->
+	<bean id="ManagerServiceTarget" class="com.tssProject.service.ManagerServiceImpl">
+		<property name="managerDao" ref="ManagerDAO" ></property>
+	</bean>
+	
+	<bean id="ManagerService"
+		 class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref bean="hibernateTransactionManager"/><!-- 为事务代理bean注入事务管理器-->
+		</property>
+		<property name="transactionAttributes"><!-- 设置事务属性 -->
+			<props>
+			<!-- 所有以 show开头的方法，采用required的事务策略，并且只读 -->
+			<prop key="show*">PROPAGATION_REQUiRED,readOnly</prop>
+			<!-- 其他所有的方法，采用required的事务策略 -->
+			<prop key="*">PROPAGATION_REQUIRED</prop>
+			</props>
+		</property>
+		<property name="target"><!--为事务代理bean设置目标bean -->
+			<ref bean="ManagerServiceTarget"/>
+		</property>
+	</bean>
+	<!--声明式的事务管理ManagerService结束 -->
+	
+	
+	 
+	 <!-- 声明式的事务管理ContactService开始 -->
+	<bean id="ContactServiceTarget" class="com.tssProject.service.ContactServiceImpl">
+		<property name="contactdao" ref="ContactDAO" ></property>
+	</bean>
+	
+	<bean id="ContactService"
+		 class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref bean="hibernateTransactionManager"/><!-- 为事务代理bean注入事务管理器-->
+		</property>
+		<property name="transactionAttributes"><!-- 设置事务属性 -->
+			<props>
+			<!-- 所有以 show开头的方法，采用required的事务策略，并且只读 -->
+			<prop key="show*">PROPAGATION_REQUiRED,readOnly</prop>
+			<!-- 其他所有的方法，采用required的事务策略 -->
+			<prop key="*">PROPAGATION_REQUIRED</prop>
+			</props>
+		</property>
+		<property name="target"><!--为事务代理bean设置目标bean -->
+			<ref bean="ContactServiceTarget"/>
+		</property>
+	</bean>
+	<!--声明式的事务管理ContactService结束 -->
+	
+	
+	
+	 <!-- 声明式的事务管理TopicService开始 -->
+	<bean id="TopicServiceTarget" class="com.tssProject.service.TopicServiceImpl">
+		<property name="topicDao" ref="TopicDAO" ></property>
+	</bean>
+	
+	<bean id="TopicService"
+		 class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref bean="hibernateTransactionManager"/><!-- 为事务代理bean注入事务管理器-->
+		</property>
+		<property name="transactionAttributes"><!-- 设置事务属性 -->
+			<props>
+			<!-- 所有以 show开头的方法，采用required的事务策略，并且只读 -->
+			<prop key="show*">PROPAGATION_REQUiRED,readOnly</prop>
+			<!-- 其他所有的方法，采用required的事务策略 -->
+			<prop key="*">PROPAGATION_REQUIRED</prop>
+			</props>
+		</property>
+		<property name="target"><!--为事务代理bean设置目标bean -->
+			<ref bean="TopicServiceTarget"/>
+		</property>
+	</bean>
+	<!--声明式的事务管理TopicService结束 -->
+	
+	
+	
+	
+	 <!-- 声明式的事务管理CommentService开始 -->
+	<bean id="CommentServiceTarget" class="com.tssProject.service.CommentServiceImp">
+		<property name="commentdao" ref="CommentDAO" ></property>
+	</bean>
+	
+	<bean id="CommentService"
+		 class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref bean="hibernateTransactionManager"/><!-- 为事务代理bean注入事务管理器-->
+		</property>
+		<property name="transactionAttributes"><!-- 设置事务属性 -->
+			<props>
+			<!-- 所有以 show开头的方法，采用required的事务策略，并且只读 -->
+			<prop key="show*">PROPAGATION_REQUiRED,readOnly</prop>
+			<!-- 其他所有的方法，采用required的事务策略 -->
+			<prop key="*">PROPAGATION_REQUIRED</prop>
+			</props>
+		</property>
+		<property name="target"><!--为事务代理bean设置目标bean -->
+			<ref bean="CommentServiceTarget"/>
+		</property>
+	</bean>
+	<!--声明式的事务管理CommentService结束 -->
+	
+	
+	
+	 <!-- 声明式的事务管理UploadService开始 -->
+	<bean id="UploadServiceTarget" class="com.tssProject.service.UploadServiceImp">
+		<property name="uploadDao" ref="UploadDAO" ></property>
+	</bean>
+	
+	<bean id="UploadService"
+		 class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref bean="hibernateTransactionManager"/><!-- 为事务代理bean注入事务管理器-->
+		</property>
+		<property name="transactionAttributes"><!-- 设置事务属性 -->
+			<props>
+			<!-- 所有以 show开头的方法，采用required的事务策略，并且只读 -->
+			<prop key="show*">PROPAGATION_REQUiRED,readOnly</prop>
+			<!-- 其他所有的方法，采用required的事务策略 -->
+			<prop key="*">PROPAGATION_REQUIRED</prop>
+			</props>
+		</property>
+		<property name="target"><!--为事务代理bean设置目标bean -->
+			<ref bean="UploadServiceTarget"/>
+		</property>
+	</bean>
+	<!--声明式的事务管理UploadService结束 -->
+	
+	
+	<!-- 声明式的事务管理ShowPictureService开始 -->
+	<bean id="ShowPictureServiceTarget" class="com.tssProject.service.ShowPictureServiceImpl">
+		<property name="uploadDao" ref="UploadDAO" ></property>
+	</bean>
+	
+	<bean id="ShowPictureService"
+		 class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref bean="hibernateTransactionManager"/><!-- 为事务代理bean注入事务管理器-->
+		</property>
+		<property name="transactionAttributes"><!-- 设置事务属性 -->
+			<props>
+			<!-- 所有以 show开头的方法，采用required的事务策略，并且只读 -->
+			<prop key="show*">PROPAGATION_REQUiRED,readOnly</prop>
+			<!-- 其他所有的方法，采用required的事务策略 -->
+			<prop key="*">PROPAGATION_REQUIRED</prop>
+			</props>
+		</property>
+		<property name="target"><!--为事务代理bean设置目标bean -->
+			<ref bean="ShowPictureServiceTarget"/>
+		</property>
+	</bean>
+	<!--声明式的事务管理ShowPictureService结束 -->
+	
+	
+	
+	<bean id="AddUserAction" class="com.tssProject.action.AddUserAction">
+		<property name="userService" ref="UserService"></property>
+	</bean>
+	
+	<bean id="ManagerAction" class="com.tssProject.action.ManagerAction">
+		<property name="managerService" ref="ManagerService"></property>
+	</bean>
+	
+	
+		<bean id="LoginAction" class="com.tssProject.action.LoginAction">
+		<property name="userService" ref="UserService"></property>
+		<property name="managerService" ref="ManagerService"></property>
+	</bean>
+	
+	<bean id="TitlelistAction" class="com.tssProject.action.TitlelistAction">
+		<property name="topicService" ref="TopicService"></property>
+		
+	</bean>
+	
+	<bean id="ArticalAction" class="com.tssProject.action.ArticalAction">
+		<property name="topicService" ref="TopicService"></property>
+		<property name="commentservice" ref="CommentService"></property>
+		
+	</bean>
+	<bean id="ArticalManageAction" class="com.tssProject.action.ArticalManageAction">
+		<property name="topicService" ref="TopicService"></property>
+		
+	</bean>
+	<bean id="FindArticalByIdAction" class="com.tssProject.action.FindArticalByIdAction">
+		<property name="topicService" ref="TopicService"></property>
+		
+	</bean>
+	<bean id="UpdateArticalAction" class="com.tssProject.action.UpdateArticalAction">
+		<property name="topicService" ref="TopicService"></property>
+		
+	</bean>
+	
+	<bean id="DeleteArticalAction" class="com.tssProject.action.DeleteArticalAction">
+		<property name="topicService" ref="TopicService"></property>
+		
+	</bean>
+	
+	
+	
+	<bean id="ContactAction" class="com.tssProject.action.ContactAction">
+		<property name="contactservice" ref="ContactService"></property>
+		
+	</bean>
+	<bean id="CommentAction" class="com.tssProject.action.CommentAction">
+		<property name="commentservice" ref="CommentService"></property>
+		
+	</bean>
+	<bean id="FindCommentByIdAction" class="com.tssProject.action.FindCommentByIdAction">
+		<property name="commentservice" ref="CommentService"></property>
+		
+	</bean>
+	<bean id="DeleteCommentAction" class="com.tssProject.action.DeleteCommentAction">
+		<property name="commentservice" ref="CommentService"></property>
+		
+	</bean>
+	<bean id="CommanageAction" class="com.tssProject.action.CommanageAction">
+		<property name="commentservice" ref="CommentService"></property>
+		
+	</bean>
+	<bean id="MessageAction" class="com.tssProject.action.MessageAction">
+		<property name="contactservice" ref="ContactService"></property>
+		
+	</bean>
+	
+	
+	<bean id="UploadAction" class="com.tssProject.action.UploadAction">
+		<property name="uploadService" ref="UploadService"></property>
+		
+	</bean>
+	
+	<bean id="DeleteImgAction" class="com.tssProject.action.DeleteImgAction">
+		<property name="uploadService" ref="UploadService"></property>
+		
+	</bean>
+	
+	<bean id="ShowPictureAction" class="com.tssProject.action.ShowPictureAction">
+		<property name="showPictureService" ref="ShowPictureService"></property>
+		
+	</bean>
+	<bean id="GallaryAction" class="com.tssProject.action.GallaryAction">
+		<property name="showPictureService" ref="ShowPictureService"></property>
+		
+	</bean>
+	
+	
+
+		
+		<bean id="TopicAction" class="com.tssProject.action.TopicAction">
+		<property name="topicService" ref="TopicService"></property>
+	</bean>
+
+
+
+		
+		</beans>

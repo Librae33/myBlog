@@ -1,0 +1,12 @@
+
+	.head{
+		background: rgb(131,144,161);
+		height: 100px;
+	}
+	span{  
+	line-height: 100px;
+    color: white;
+    font-size:25px;
+    font-weight: bolder;
+    padding-left: 30px;
+}

@@ -1,0 +1,35 @@
+	body{
+		background: url(../img/listbg.jpg);
+	}
+	table{
+		height: 800px;
+		width: 80%;
+		margin: 0 auto;
+		text-indent: 20%;
+		font-size: 20px;
+		font-weight: bold;
+		color: black;
+		background: white;
+		filter:alpha(opacity:60);
+	    opacity:0.6;
+	    margin-top:50px;
+		
+	}
+	h1{
+		display: inline;
+		font-size: 30px;
+		font-weight: bold;
+		color: white;
+
+	}
+     .iconfont{
+     	padding-left: 20px;
+		font-size: 30px;
+		font-weight: bold;
+		color: white;
+		text-decoration: none;
+
+	}
+	 .iconfont:hover{
+	 	color: rgb(133,94,15);
+	 }

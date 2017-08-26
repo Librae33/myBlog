@@ -1,0 +1,178 @@
+
+#container{
+	height: 1200px;
+	background: url(../img/bg-01.jpg) no-repeat;
+}
+#container span{
+	display: inline-block;
+    font-size: 25px;
+    color: white;
+    font-family: "Microsoft YaHei";
+    padding: 30px;
+}
+#header{
+	height: 100px;
+	background: rgb(221,221,221);
+}
+#main{
+	height: 500px;
+	width: 50%;
+	margin-left: 25%;
+	margin-top: 280px;
+	background: white;
+	filter:alpha(opacity:70);
+	opacity:0.7;
+
+}
+#main a{
+    text-decoration: none;
+	font-size: 130px;
+	color: white;
+	display: inline-block;
+	margin-left: 40%;
+	margin-top: -150px;
+	animation:dancer 2s linear  infinite running; 
+}
+@keyframes dancer
+{
+	0%{
+		transform:rotateY(0deg); 
+	}
+	100%{
+		transform:rotateY(-360deg);
+	}
+}
+#main a:hover{
+  color: #339999;
+}
+.nav-bar{
+	margin:0 auto;
+	margin-top: 60px;
+	width: 80%;
+	display: flex;
+
+}
+.nav-item{
+	flex-grow:1;
+	width: 130px;
+	height: 60px;
+	float: left;
+	background: white;
+	filter:alpha(opacity:40);
+	opacity:0.4;
+	margin-left: 60px;
+	position: relative;
+	
+}
+
+
+.nav-item:hover{
+    filter:alpha(opacity:80);
+	opacity:0.8;
+	background:#339999;
+	border-radius: 50%;
+	transition:0.5s ease-in;
+}
+
+.nav-item a{
+	text-decoration: none;
+	font-size: 16px;
+	font-weight: bold;//����Ӵ�
+	color: black;
+	line-height: 60px;
+	padding-left: 25%;
+	font-family: "Microsoft YaHei";
+	
+
+}
+#articalList{
+	height: 200px;
+	width: 230px;
+	top: -200px;
+	left: -35px;
+	background: black;
+	position: absolute;
+	border-radius: 20%;
+	display: none;
+
+}
+#articalList .iconfont{
+	background: black;
+	width: 5px;
+	height: 5px;
+	position: absolute;
+    top: 173px;
+	left: 0px;
+}
+.nav-item:hover #articalList{
+	display: block;
+	background: black;
+	
+	transition:1s ;
+}
+
+.nav-item a:hover{
+   color: black;	
+   transition:0.3s linear;
+   transform:translate3d(30px,-40px,10px);
+}
+#icon span{
+	color: white;
+	
+}
+
+#icon span:hover{
+	color:  #3399CC;
+}
+#icon a{
+	text-decoration: none;
+	font-size: 30px;
+	color: white;
+	padding: 15px;
+	transition:0.8s ease-in ;//!!!!!!�ڸ�Ԫ�ؼӣ��������䣬��Ȼ��ʹת��Ҳ������Ч��
+
+
+
+}
+#icon a:hover{
+     color: #3399CC;
+     transform: rotate(360deg);//��ת��360��
+     
+
+}
+
+
+.list{
+	position: absolute;
+    height: 180px;
+    width: 200px;
+}
+.alist {
+	height: 20px;
+	margin: 10px;
+}
+.blist {
+	color: white;
+	font-size: 15px;
+	text-decoration: none;
+	padding: 20px;
+	display: block;
+
+
+}
+#header .iconfont{
+	font-size: 40px;
+	padding: 10px;
+	color: white;
+}
+
+#header .iconfont:hover{
+	color: #3399CC;
+	transition:1s;
+	transform:rotateY(360deg);
+
+}
+#header span{
+	color:  #3399CC;
+	font-weight: bolder;
+}

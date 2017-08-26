@@ -1,0 +1,101 @@
+body{
+	background: url(../img/articlebg.jpg);
+	background-size: 100% 1000px;
+}
+	.lside{
+		width: 12%;
+		height:1000px;
+		filter:alpha(opacity:80);
+	    opacity:0.8;
+		float: left;
+		
+
+	}
+	.rside{
+		float: right;
+		width:75%;
+		margin-left:15px;
+		margin-right: 10%;
+		height: 1200px;
+		background:rgba(255,255,255,0.8);
+		position:relative;
+		
+
+	}
+	h2{
+		color: white;
+		text-align: center;
+		font-size: 30px;
+	font-weight:bold;
+   color:#3399CC;
+   font-family: "Microsoft YaHei";
+	}
+	h3{
+		color: white;
+		text-align: center;
+		font-size: 30px;
+	font-weight:bold;
+   color:#3399CC;
+   font-family: "Microsoft YaHei";
+	}
+	span{
+	color: white;
+		text-align: center;
+		font-size: 18px;
+
+   font-family: "Microsoft YaHei";
+   padding-left:20px;
+   color:black;
+	}
+	p{
+	margin-left:50px;
+	 font-size: 20px;
+	font-weight:bold;
+   color: black;
+   font-family: "Microsoft YaHei";
+	}
+	
+	.comment{
+		position: absolute;
+		left: 20%;
+		top:1220px;
+
+	}
+	.comContent{
+	    top:1650px;
+	    position: absolute;
+		left: 20%;
+	}
+	.comContent dl{
+	  border:1px solid white; 
+	  width:700px;
+	  height:600px;
+	  color:gray;
+	  font-size: 20px;
+	  font-weight:bold;
+	  border-radius:5px;
+	  margin:0px;
+	  padding-top:10px;
+	  background:rgba(255,255,255,0.8);
+	  
+	  
+	}
+	.comContent dl dt{
+	color:#3399CC;
+	font-size:15px;
+	}
+	.comContent dl dd{
+	margin:0px;
+	padding:10px 5px 10px 0px;
+	border-bottom:1px solid white;
+	line-height:40px;
+	}
+	.content{
+	position: absolute;
+	left: 30%;
+	top: 1800px;
+	}
+	span{
+	color:rgb(65,65,65);
+	font-size:15px;
+	}

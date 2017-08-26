@@ -1,0 +1,39 @@
+.container{
+	height: 600px;
+	width: 100%;
+	background: url(../img/lg01.jpg);
+	background-size:  100% 600px;
+      }
+	.reg{
+		position: absolute;
+		left: 50%;
+		top: 30px;
+	}
+	table{
+		width: 600px;
+		height:600px;
+		border:1px solid gray;
+		cellspacing:0px;
+		cellpadding:0px; 
+		color: white;
+		font-size: 18px;
+		font-weight: bold;
+		font-family: "Microsoft Yahei";
+		background:rgba(58,40,38,0.8);
+	}
+	.submit{
+
+		width: 70%;
+		height: 30px;
+		background: rgb(209,201,190);
+		border: 0px;
+		color: #333333;
+		font-size: 18px;
+		font-weight: bold;
+		font-family: "Microsoft Yahei";
+	}
+	.input{
+		width: 70%;
+		height: 30px;
+	}
+	

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+<constant name="struts.i18n.encoding" value="gb2312"></constant>
+	<package name="struts2" extends="struts-default">
+		<action name="AddUserAction" class="AddUserAction">
+			<result name="success">myBlog.jsp</result>
+			<result name="input">addUser.jsp</result>
+		</action>
+		
+		<action name="ManagerAction" method="addmanager" class="ManagerAction">
+			<result name="success">AddManager.jsp</result>
+			<result name="input">AddManager.jsp</result>
+		</action>
+		
+		<action name="LoginAction"  class="LoginAction">
+			<result name="success">backend.jsp</result>
+			
+			<result name="failed">Login.jsp</result>
+			<result name="input">Login.jsp</result>
+		</action>
+		
+		<action name="TopicAction" method="addTopic" class="TopicAction">
+			<result name="success">topic.jsp</result>
+			<result name="input">topic.jsp</result>
+		</action>
+		
+		<action name="TitlelistAction" class="TitlelistAction">
+			<result name="success" >Titlelist.jsp</result>
+			<result name="input">myBlog.jsp</result>
+		</action>
+		
+		<action name="ArticalAction" class="ArticalAction">
+			<result name="success" >Artical.jsp</result>
+			<result name="input">Titlelist.jsp</result>
+		</action>
+		
+		<action name="ArticalManageAction" class="ArticalManageAction">
+			<result name="success" >ArticalManage.jsp</result>
+			<result name="input">backend.jsp</result>
+		</action>
+		<action name="FindArticalByIdAction" class="FindArticalByIdAction">
+			<result name="success" >UpdateArtical.jsp</result>
+			<result name="input">ArticalManage.jsp</result>
+		</action>
+		<action name="UpdateArticalAction" class="UpdateArticalAction">
+			<result name="success" >UpdateArtical.jsp</result>
+			<result name="input">UpdateArtical.jsp</result>
+		</action>
+		<action name="DeleteArticalAction" class="DeleteArticalAction">
+			<result name="success" >ArticalManage.jsp</result>
+			<result name="input">ArticalManage.jsp</result>
+		</action>
+		<action name="FindCommentByIdAction" class="FindCommentByIdAction">
+			<result name="success" >ArticalManage.jsp</result>
+			<result name="input">ArticalManage.jsp</result>
+		</action>
+		<action name="DeleteCommentAction" class="DeleteCommentAction">
+			<result name="success" >commentManage.jsp</result>
+			<result name="input">commentManage.jsp</result>
+		</action>
+		
+		
+		<action name="ContactAction" class="ContactAction">
+			<result name="success" >myBlog.jsp</result>
+			<result name="input">contact.jsp</result>
+		</action>
+		
+		<action name="MessageAction" class="MessageAction">
+			<result name="success" >message.jsp</result>
+			<result name="input">backend.jsp</result>
+		</action>
+		<action name="CommentAction" class="CommentAction">
+			<result name="success"  >Artical.jsp</result>
+			<result name="input">Artical.jsp</result>
+		</action>
+		<action name="CommanageAction" class="CommanageAction">
+			<result name="success" >commentManage.jsp</result>
+			<result name="input">backend.jsp</result>
+		</action>
+		
+		<action name="UploadAction" class="UploadAction">
+			<result name="success" >UploadFile.jsp</result>
+			<result name="input">UploadFile.jsp</result>
+		</action>
+		
+		
+		<action name="ShowPictureAction" class="ShowPictureAction">
+			<result name="success" >ShowPicture.jsp</result>
+			<result name="input">ShowPicture.jsp</result>
+		</action>
+		<action name="GallaryAction" class="GallaryAction">
+			<result name="success" >gallary.jsp</result>
+			<result name="input">myBlog.jsp</result>
+		</action>
+		
+		<action name="DeleteImgAction" class="DeleteImgAction">
+			<result name="success" >ShowPicture.jsp</result>
+			<result name="input">ShowPicture.jsp</result>
+		</action>
+		
+		
+		
+</package>	
+</struts>    

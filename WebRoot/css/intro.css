@@ -1,0 +1,128 @@
+#container{
+	height: 1000px;
+	background: url(../img/bg-05.jpg) no-repeat;
+}
+#Bcontainer{
+	height: 1000px;
+	background: url(../img/bg-05.jpg) no-repeat;
+}
+#Ccontainer{
+	height: 1500px;
+	background: url(../img/bg-05.jpg) no-repeat;
+}
+#header{
+	height: 80px;
+	background: rgb(221,221,221);
+}
+#header h2{
+    color: white;
+    text-align: center;
+    font-family: "Microsoft YaHei";
+    font-weight: bolder;
+    font-size: 40px;
+    margin-top: 20px;
+    background: rgb(92,109,73);
+}
+
+.nav{
+	margin-top: 20px;
+	margin-left:20px;
+	height: 100px;
+	width: 150px;
+	background: rgb(92,109,73);
+	filter:alpha(opacity:80);
+	opacity:0.8;
+	border-radius: 20%;
+}
+.nav span{
+	color: white;
+	font-size: 25px;
+	font-family: "Microsoft YaHei";
+	text-align: center;
+	margin-left: 30px;
+	line-height: 100px;
+}
+.Snav{
+	margin-top: 500px;
+	margin-left:30px;
+	height: 100px;
+	width: 150px;
+	background: rgb(92,109,73);
+	filter:alpha(opacity:80);
+	opacity:0.8;
+	border-radius: 20%;
+}
+.Snav span{
+	color: white;
+	font-size: 25px;
+	font-family: "Microsoft YaHei";
+	text-align: center;
+	margin-left: 30px;
+	line-height: 100px;
+}
+#aboutMe{
+	height: 500px;
+	width: 80%;
+	margin-left: 10%;
+	
+
+}
+#edu{
+	height: 500px;
+	width: 80%;
+	margin-left: 10%;
+	background: white;
+	filter:alpha(opacity:50);
+	opacity:0.5;
+	margin-top: 100px;
+}
+#skill{
+	height: 500px;
+	width: 80%;
+	margin-left: 10%;
+	background: black;
+	filter:alpha(opacity:50);
+	opacity:0.5;
+	margin-top: 100px;
+}
+#lside{
+	width: 60%;
+	height:500px; 
+	//background: url(../img/myPic02.jpg);
+}
+#lside img{
+	width: 500px;
+	height:500px;
+}
+#rside{
+	width:40%;
+	height:500px; 
+	float: right;
+	position: absolute;
+	top:220px;
+	left: 640px;
+	background: rgb(92,109,73);
+	filter:alpha(opacity:50);
+	opacity:0.5;
+}
+
+#edu #img01{
+	margin-left: 200px;
+	margin-top: 20px;
+
+}
+#edu #img02{
+	margin-left: 500px;
+	margin-top: 20px;
+
+}
+#edu #img03{
+	margin-left: 200px;
+	margin-top: 20px;
+
+}
+#edu #img04{
+	margin-left: 500px;
+	margin-top: 20px;
+
+}
